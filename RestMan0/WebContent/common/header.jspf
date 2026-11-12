@@ -1,0 +1,22 @@
+<%-- Dung chung: dau trang + ham tien ich (nhung bang <%@ include file="../common/header.jspf" %>) --%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ page import="java.util.*, model.*, dao.*" %>
+<%!
+    static String esc(String s) {
+        if (s == null) return "";
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
+    }
+    static String money(double v) { return String.format("%,.0f đ", v); }
+%>
+<%
+    String ctx = request.getContextPath();
+    Member0 me = (Member0) session.getAttribute("member");
+%>
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>RestMan0</title>
+<link rel="stylesheet" href="<%=ctx%>/common/style.css"></head>
+<body>
+<div class="topbar"><div><b>RestMan0</b> - Quản lý nhà hàng</div>
+<div><% if (me != null) { %>Xin chào, <b><%=esc(me.getFullName())%></b> (<%=esc((String) session.getAttribute("role"))%>)
+<a href="<%=ctx%>/doLogout0.jsp">Đăng xuất</a><% } %></div></div>
+<div class="wrap">

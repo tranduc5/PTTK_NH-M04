@@ -1,0 +1,10 @@
+<%@ page pageEncoding="UTF-8" %><%-- Kiem tra phan quyen: trang khai bao truoc  String REQUIRED_ROLE = "MANAGER";  --%>
+<%
+    {
+        Object r = session.getAttribute("role");
+        if (session.getAttribute("member") == null || r == null || !REQUIRED_ROLE.equals(r)) {
+            response.sendRedirect(request.getContextPath() + "/gdLogin0.jsp?err=2");
+            return;
+        }
+    }
+%>
